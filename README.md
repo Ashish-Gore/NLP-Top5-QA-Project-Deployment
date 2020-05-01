@@ -1,2 +1,1 @@
-# NLP-Test-Deployment
-For Testing Purpose only.
+# NLP-Model-Deployment
