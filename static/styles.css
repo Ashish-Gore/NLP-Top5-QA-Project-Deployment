@@ -59,7 +59,6 @@ header h2{
   }
   
   .collapsible:after {
-	content: '\002B';
 	
 	font-weight: bold;
 	float: right;
@@ -68,7 +67,7 @@ header h2{
   }
   
   .active:after {
-	content: "\2212";
+	font-weight: bold;
   }
   
   .content {
