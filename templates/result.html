@@ -1,32 +1,67 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
-</head>
-<body>
 
-	<header>
-		<div class="container">
-		<div id="brandname">
-			ML App
-		</div>
-		<h2>Spam Detector For SMS Messages</h2>
-		
-	</div>
-	</header>
-	<p style="color:blue;font-size:20;text-align: center;"><b>Results for Comment</b></p>
-	<div class="results">
+    <html lang="en">
+    <head>
+        <title>Results</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Baloo+2&display=swap" rel="stylesheet">
+        <meta charset="UTF-8">
+        <title>Email text classifier</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+        <link href="https://fonts.googleapis.com/css?family=Exo+2&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+            integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+           
+    </head>
+    <body>
 
 
-		
-	{% if prediction == 1%}
-	<h2 style="color:red;">Spam</h2>
-	{% elif prediction == 0%}
-	<h2 style="color:blue;">Not a Spam (It is a Ham)</h2>
-	{% endif %}
 
-	</div>
+        <header>
+        
+    	<div id="brandname">
+    		<right style="font-size: 200%;" class="font-weight-bolder" > Top 5 Retrieved Answers </right><br>
+    	    <right class="font-weight-bolder" > Matching Queries as follow </right>   
+    	    
+            
+        </div>
 
-</body>
-</html>
+            
+            
+              
+        </header>
+
+              <br><br><br><br>
+                {% for i in range(5) %}
+                <button type="button" class="collapsible" > {{i+1}} ) {{result0[i]}}</button>
+                <div class="content">
+                  <p>{{result1[i]}}</p><br>
+                 <p>{{result2[i]}}</p>
+                </div>
+                 
+                {% endfor %}   
+                
+        
+
+        </div>
+
+       </div>
+              
+    </body>
+<script>
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.maxHeight){
+      content.style.maxHeight = null;
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+    } 
+  });
+}
+</script>
+    </html>
