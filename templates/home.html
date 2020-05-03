@@ -1,38 +1,135 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title>Home</title>
-	<!-- <link rel="stylesheet" type="text/css" href="../static/css/styles.css"> -->
-	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<meta charset="UTF-8">
+<link rel="apple-touch-icon" type="image/png" href="https://static.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png" />
+<meta name="apple-mobile-web-app-title" content="CodePen">
+<link rel="shortcut icon" type="image/x-icon" href="https://static.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" />
+<link rel="mask-icon" type="" href="https://static.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111" />
+<title>Group 4 Project QA Search </title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+
+<style>
+/*** COLORS ***/
+/*** DEMO ***/
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+body {
+  
+}
+p {
+  margin-top: 30px;
+}
+.cntr {
+  display: table;
+  width: 100%;
+  height: 100%;
+}
+.cntr .cntr-innr {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+}
+/*** STYLES ***/
+.search {
+  display: inline-block;
+  position: static;
+  height: 40px;
+  width: 500px;
+  
+  border: 2px solid rgb(0, 0, 0);
+ 
+  cursor: text;
+  
+}
+.search:after {
+  content: "";
+  position: absolute;
+  width: 2px;
+  height: 20px;
+  right: -6px;
+  top: 34px;
+  background: rgb(8, 8, 8);
+  border-radius: 3px;
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+  -webkit-transition: all 400ms ease;
+  transition: all 400ms ease;
+}
+.search.active,
+.search:hover {
+  width: 500px;
+  margin-right: 0px;
+}
+.search:active:after,
+.search:hover:after {
+  height: 0px;
+
+}
+.search input {
+  width: 100%;
+  border: none;
+  box-sizing: border-box;
+  font-family: Helvetica;
+  font-size: 20px;
+  color: inherit;
+  background: transparent;
+  outline-width: 0px;
+}
+</style>
+<script>
+  $("#inpt_search").on('focus', function () {
+    $(this).parent('label').addClass('active');
+  });
+  
+  $("#inpt_search").on('blur', function () {
+    if($(this).val().length == 0)
+      $(this).parent('label').removeClass('active');
+  });
+  </script>
 </head>
-<body>
-
-	<header>
-		<div class="container">
-		<div id="brandname">
-			Machine Learning App with Flask
-		</div>
-		<h2>Spam Detector For Email Messages</h2>
-		
-	</div>
-	</header>
-
-	<div class="ml-container">
-
-		<form action="{{ url_for('predict')}}" method="POST">
-		<p>Enter Your Message Here</p>
-		<!-- <input type="text" name="comment"/> -->
-		<textarea name="message" rows="6" cols="50"></textarea>
-		<br/>
-
-		<input type="submit" class="btn-info" value="predict">
-		
-	</form>
-		
-	</div>
+<body translate="no">
+<div class="cntr">
+<div class="cntr-innr">
+	<h1 style="font-size: 300%;" class="font-weight-bolder" >Search Top 5 Answers Using Keywords</h1>
+	<br><br>
+	
+	<h1 style="font-size: 200%;" class="font-weight-bolder"  >Please Enter Keywords below.</h1>
 
 	
+	<br><br>
+  <form action="{{ url_for('predict')}}" method="POST">
+<label class="search" for="inpt_search">
 	
+<input id="inpt_search" type="text" name="message"/>
+<datalist id="pasta">
+  {% for item in prediction %}
+  <option>{{item}}</option>
+  {% endfor %}
+
+</datalist>
+
+
+</label>
+<br><br><br><br>
+<h1  class="text-muted" style="font-size: 150%;">Group-4 Project</h1>
+<ol  class="text-muted" >
+    <li>Ashish </li>
+    <li>John </li>
+    <li>Megha </li>
+    <li>Swathi </li>
+    <li>Akshay </li>
+</ol>
+
+
+    			
+                    
+</div>
+</div>
 
 </body>
 </html>
