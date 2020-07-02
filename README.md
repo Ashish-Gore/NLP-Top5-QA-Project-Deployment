@@ -17,4 +17,4 @@ An interface to which takes text as input, in the backend NLP algorithm retrieve
 Link to the Deployed Project: https://top5-qa-search.herokuapp.com/
 
 
-![Template](https://github.com/Ashish-Gore/NLP-Project-Deployment-Files/blob/master/static/Template.PNG?raw=true)
+![Template](https://github.com/Ashish-Gore/NLP-Top5-QA-Project-Deployment/blob/master/static/Template.png?raw=true)
